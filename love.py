@@ -86,16 +86,6 @@ class DataBase():
                                              now['wind_class'])
         return weather
 
-    def upload_addr(self, addr):
-
-        sql = 'INSERT INTO address VALUES (id, NOW(), "{}")'.format(addr)
-        print(sql)
-        self.cursor.execute(sql)
-        print('数据上传成功！')
-        self.cursor.close()
-        self.connect.commit()
-        self.connect.close()
-
     def get_weather(self, province, city):
 
         # 查询数据
@@ -166,7 +156,6 @@ class DataBase():
 
         addr, weather = self.get_weather_info()
 
-        self.upload_addr(addr)
         print(pic_url, text)
         return addr, weather, nick_name, pic_url, text, font_color
 
